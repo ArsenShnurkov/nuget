@@ -16,22 +16,10 @@ namespace NuGet
         private List<PackageSource> _defaultPackageSources;
         private string _defaultPushSource;
 
-		///<remarks>
-		/// http://stackoverflow.com/questions/5116977/how-to-check-the-os-version-at-runtime-e-g-windows-or-linux-without-using-a-con
-		///</remarks>
-        private static bool IsLinux
-        {
-            get
-            {
-                int p = (int) Environment.OSVersion.Platform;
-                return (p == 4) || (p == 6) || (p == 128);
-            }
-        }
-
         public static string GetGlobalConfigDir()
 		{
 			var baseDirectory = String.Empty;
-			if (IsLinux) {
+			if (EnvironmentUtility.IsUnix) {
 				baseDirectory = Path.DirectorySeparatorChar + "etc";
 			} else {
 				baseDirectory = Environment.GetFolderPath (Environment.SpecialFolder.CommonApplicationData);
