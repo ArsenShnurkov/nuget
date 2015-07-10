@@ -29,7 +29,7 @@ namespace NuGet
 
         private static ConfigurationDefaults InitializeInstance()
         {
-			var baseDirectory = Path.Combine(GetGlobalConfigDir(), "NuGet");
+            var baseDirectory = Path.Combine(GetGlobalConfigDir(), "NuGet");
             PhysicalFileSystem fileSystem = new PhysicalFileSystem(baseDirectory);
             return new ConfigurationDefaults(fileSystem, ConfigurationDefaultsFile);
         }
